@@ -50,13 +50,14 @@ public class Colocviu1_2MainActivity extends AppCompatActivity {
                 if(allTerms.getText().toString().isEmpty()) {
                     allTerms.setText(addTerm.getText().toString());
                 } else {
-                    allTerms.setText(allTerms.getText().toString() + " + "  + addTerm.getText().toString());
+                    allTerms.setText(allTerms.getText().toString() + "+"  + addTerm.getText().toString());
                 }
 
                 addTerm.setText("");
 
             } else if(id == R.id.compute_button) {
                 Intent goToSecondaryActivtyIntent = new Intent(Colocviu1_2MainActivity.this, Colocviu1_2SecondaryActivity.class);
+                Log.d("MainActivity", allTerms.getText().toString());
                 goToSecondaryActivtyIntent.putExtra(Constants.ALL_TERMS_DATA, allTerms.getText().toString());
                 activityResultLauncher.launch(goToSecondaryActivtyIntent);
             }

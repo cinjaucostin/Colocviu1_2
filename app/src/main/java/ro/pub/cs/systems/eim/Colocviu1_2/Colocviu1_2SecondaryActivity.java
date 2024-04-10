@@ -1,5 +1,6 @@
 package ro.pub.cs.systems.eim.Colocviu1_2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Colocviu1_2SecondaryActivity extends AppCompatActivity {
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class Colocviu1_2SecondaryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +26,14 @@ public class Colocviu1_2SecondaryActivity extends AppCompatActivity {
         Log.d("Compute tag", allTerms);
 
         if(!allTerms.isEmpty()) {
-            String[] elements = allTerms.split(" + ");
+
             int sum = 0;
-            for(int i = 0; i < elements.length; i++) {
-                int elementInt = Integer.parseInt(elements[i]);
-                sum += elementInt;
+            StringTokenizer tokenizer = new StringTokenizer(allTerms, "+");
+            while (tokenizer.hasMoreTokens()) {
+                String token = tokenizer.nextToken();
+                System.out.println(token);
+                Log.d("Compute tag", token);
+                sum += Integer.parseInt(token);
             }
 
             Intent intentToParent = new Intent();
